@@ -71,7 +71,7 @@ module.exports = class AccountManager extends BaseManager {
     }
     _getPasswordErrors(account) {
         var errors = {};
-        if (!account._id && (!account.password || account.password === ""))
+        if (!account._id && account.kind === "local" && (!account.password || account.password === ""))
             errors["password"] = "password is required";
         return errors;
     }
